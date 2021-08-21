@@ -6,7 +6,9 @@ class Goal < ApplicationRecord
     when 'Company'
       Goal.where('goalable_type = ? AND goal_parent_id = ?', 'Department', self.goalable_id)
     when 'Department'
-     Goal.where('goalable_type = ? AND goal_parent_id = ?', 'Zone', self.goalable_id) 
+     Goal.where('goalable_type = ? AND goal_parent_id = ?', 'Zone', self.goalable_id)
+    else
+      []
     end
   end
 end

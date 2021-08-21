@@ -29,11 +29,11 @@ ActiveRecord::Schema.define(version: 2021_08_21_131524) do
   end
 
   create_table "goals", force: :cascade do |t|
-    t.bigint "goalable_id", null: false
+    t.bigint "goalable_id", default: 0, null: false
     t.bigint "goal_parent_id", null: false
     t.string "goalable_type", default: "", null: false
-    t.string "title"
-    t.integer "progress"
+    t.string "title", default: "", null: false
+    t.integer "progress", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
