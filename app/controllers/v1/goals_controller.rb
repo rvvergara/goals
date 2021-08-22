@@ -8,4 +8,19 @@ class V1::GoalsController < ApplicationController
     goal = Goal.find(params[:id])
     render :show, locals: { goal: goal }
   end
+
+  def update
+    goal = Goal.find(params[:id])
+    if goal.update(goal_params)
+      render json: { status: 'OK' }, status: :ok
+    else
+      render json: { error: 'Cannot update goal' }, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def goal_params
+    params.require.permit(:title, :progress)
+  end
 end
